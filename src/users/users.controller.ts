@@ -1,3 +1,4 @@
+import { Public } from './../auth/decorators/public.decorator';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import {
@@ -23,6 +24,7 @@ export class UsersController {
     private configService: ConfigService,
   ) {}
 
+  @Public()
   @Get()
   async getUsers(@Res() res) {
     //const port = this.configService.get('PORT');
@@ -48,6 +50,7 @@ export class UsersController {
     });
   }
 
+  @Public()
   @Get('/get/user')
   async getUser(@Body() createUserDTO: CreateUserDTO, @Res() res) {
     this.logger.log(`USER[findOne] ${JSON.stringify(createUserDTO)}`);

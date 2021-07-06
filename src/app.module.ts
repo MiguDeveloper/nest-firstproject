@@ -13,14 +13,14 @@ import { AuthModule } from './auth/auth.module';
     TasksModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: ['.env.development', '.env.production'],
+      envFilePath: ['.env.development'],
     }),
     MongooseModule.forRoot(process.env.DATABASE_CONNECTION),
     ProductModule,
     UsersModule,
     AuthModule,
   ],
-  exports: [],
+  exports: [ConfigModule],
   controllers: [AppController],
   providers: [AppService],
 })

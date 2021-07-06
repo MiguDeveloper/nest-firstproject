@@ -37,7 +37,7 @@ export class UsersService {
   }
 
   async getUser(createUserDTO: CreateUserDTO): Promise<User> {
-    const user = await this.userModel.findOne(createUserDTO);
+    const user = await (await this.userModel.findOne(createUserDTO)).toObject();
     return user;
   }
 }
