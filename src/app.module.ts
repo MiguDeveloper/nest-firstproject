@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProductModule } from './product/product.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { AuthModule } from './auth/auth.module';
       envFilePath: ['.env.development'],
     }),
     MongooseModule.forRoot(process.env.DATABASE_CONNECTION),
+    ScheduleModule.forRoot(),
     ProductModule,
     UsersModule,
     AuthModule,

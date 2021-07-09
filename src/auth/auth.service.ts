@@ -13,7 +13,7 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.usersService.getUser({ username, password: pass });
-    this.logger.log(`DEBUG[validate user] ${user}`);
+    this.logger.log(`DEBUG[validate user] ${JSON.stringify(user)}`);
     if (user && user.password === pass) {
       const { password, ...result } = user;
       this.logger.log(`DEBUG[validateUser:result]: ${JSON.stringify(result)}`);
